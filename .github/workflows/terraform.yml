@@ -49,14 +49,18 @@ jobs:
         working-directory: environment/prod
         run: terraform validate
       # ============================================================
-  # 2. Sonarqube
-  # ============================================================
-      - name: SonarQube Scan
+      # 2. Sonarqube
+      # ============================================================
+      - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v6
+        with:
+          args: >
+            -Dsonar.projectKey=Pipelineforrg_storage_vnet
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.sources=.
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+          SONAR_HOST_URL: https://sonarcloud.io
 
   # ============================================================
   # 2. TERRAFORM PLAN
