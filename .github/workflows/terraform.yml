@@ -48,12 +48,15 @@ jobs:
       - name: Terraform Validate
         working-directory: environment/prod
         run: terraform validate
-      # 2. sonarquebe
+      # ============================================================
+  # 2. Sonarqube
+  # ============================================================
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
 
   # ============================================================
   # 2. TERRAFORM PLAN
