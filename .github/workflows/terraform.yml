@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - main
-      - 'feature/**'
+      - 'features/**'
 
   pull_request:
     branches:
@@ -111,7 +111,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    environment: dev
+    # environment: dev
 
     steps:
 
